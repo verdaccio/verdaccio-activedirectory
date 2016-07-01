@@ -8,6 +8,7 @@
   },
   "author": "Ela-compil",
   "license": "MIT",
+  "keywords": [ "sinopia", "activedirectory", "ldap" ],
   "repository" : {
     "type" : "git",
     "url" : "https://github.com/ela-compil/sinopia-activedirectory.git"
