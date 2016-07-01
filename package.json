@@ -1,6 +1,6 @@
 {
   "name": "sinopia-activedirectory",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Active Directory authentication plugin for sinopia",
   "main": "index.js",
   "scripts": {
@@ -8,10 +8,14 @@
   },
   "author": "Ela-compil",
   "license": "MIT",
-  "keywords": [ "sinopia", "activedirectory", "ldap" ],
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/ela-compil/sinopia-activedirectory.git"
+  "keywords": [
+    "sinopia",
+    "activedirectory",
+    "ldap"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ela-compil/sinopia-activedirectory.git"
   },
   "dependencies": {
     "activedirectory": "^0.7.2",
