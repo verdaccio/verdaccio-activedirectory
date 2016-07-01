@@ -8,6 +8,10 @@
   },
   "author": "Ela-compil",
   "license": "MIT",
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/ela-compil/sinopia-activedirectory.git"
+  },
   "dependencies": {
     "activedirectory": "^0.7.2",
     "lodash": "^4.13.1"
