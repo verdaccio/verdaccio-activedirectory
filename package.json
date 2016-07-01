@@ -1,0 +1,15 @@
+{
+  "name": "sinopia-activedirectory",
+  "version": "1.0.0",
+  "description": "Active Directory authentication plugin for sinopia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ela-compil",
+  "license": "MIT",
+  "dependencies": {
+    "activedirectory": "^0.7.2",
+    "lodash": "^4.13.1"
+  }
+}
