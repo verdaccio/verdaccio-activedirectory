@@ -1,6 +1,6 @@
 {
-  "name": "sinopia-activedirectory",
-  "version": "1.0.2",
+  "name": "verdaccio-activedirectory",
+  "version": "1.0.0",
   "dependencies": {
     "activedirectory": {
       "version": "0.7.2",

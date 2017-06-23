@@ -1,21 +1,21 @@
 {
-  "name": "sinopia-activedirectory",
-  "version": "1.0.2",
-  "description": "Active Directory authentication plugin for sinopia",
+  "name": "verdaccio-activedirectory",
+  "version": "1.0.0",
+  "description": "Active Directory authentication plugin for verdaccio",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Ela-compil",
+  "author": "nowhammies",
   "license": "MIT",
   "keywords": [
-    "sinopia",
+    "verdaccio",
     "activedirectory",
     "ldap"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ela-compil/sinopia-activedirectory.git"
+    "url": "https://github.com/nowhammies/verdaccio-activedirectory.git"
   },
   "dependencies": {
     "activedirectory": "^0.7.2",

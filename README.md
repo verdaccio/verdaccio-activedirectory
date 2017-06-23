@@ -1,11 +1,11 @@
-# sinopia-activedirectory
-Active Directory authentication plugin for sinopia
+# verdaccio-activedirectory
+Active Directory authentication plugin for verdaccio
 
 
 ## Installation
 
 ```sh
-$ npm install sinopia-activedirectory
+$ npm install verdaccio-activedirectory
 ```
 
 ## Config
