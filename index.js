@@ -32,9 +32,27 @@ Plugin.prototype.authenticate = function(user, password, callback) {
 			return callback(new Error(message));
 		}
 
-		self._logger.info('Active Directory authentication succeeded')
-		callback(null, [user]);
+		if(self._config.groupName) {
+			connection.isUserMemberOf(username, self._config.groupName, function(err, isMember) {
+				if (err) {
+					self._logger.warn('Active Directory group check failed. Error code:', err.code + '.', 'Error:\n', err);
+					return callback(err);
+				}
+				if(isMember) {
+					self._logger.info('Active Directory authentication succeeded and user is member of ' + self._config.groupName)
+					callback(null, [user]);
+				} else {
+					var message = 'User ' + user + ' is not member of ' + self._config.groupName;
+					self._logger.warn(message);
+					return callback(new Error(message))
+				}
+			});
+		} else {
+			self._logger.info('Active Directory authentication succeeded')
+			callback(null, [user]);
+		};
 	});
+
 };
 
 module.exports = Plugin;
