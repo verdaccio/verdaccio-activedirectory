@@ -32,21 +32,31 @@ Plugin.prototype.authenticate = function(user, password, callback) {
 			return callback(new Error(message));
 		}
 
-		if(self._config.groupName) {
-			connection.isUserMemberOf(username, self._config.groupName, function(err, isMember) {
+		if(self._config.groupName) {	
+			connection.getGroupMembershipForUser(username, function(err, userGroups){
 				if (err) {
 					self._logger.warn('Active Directory group check failed. Error code:', err.code + '.', 'Error:\n', err);
 					return callback(err);
 				}
-				if(isMember) {
-					self._logger.info('Active Directory authentication succeeded and user is member of ' + self._config.groupName)
-					callback(null, [user]);
+
+				// cast groupName to an array of groupname if a single one is provided.
+				var requestedGroups = Array.isArray(self._config.groupName) ? self._config.groupName : [self._config.groupName];
+				
+				// figure out which of the required groups exist on the user, if any.
+				var matchingGroups = userGroups.reduce(function getGroupNames(acc, group){
+					return acc.concat(requestedGroups.filter(function(requestedGroup){
+						return (group.cn === requestedGroup) || (group.dn === requestedGroup)
+					}));
+				}, []);
+				if(matchingGroups.length > 0){
+					self._logger.info('Active Directory authentication succeeded and user is member of group(s) ' + matchingGroups.join(', '))
+					callback(null, matchingGroups.concat(user));
 				} else {
-					var message = 'User ' + user + ' is not member of ' + self._config.groupName;
+					var message = 'User ' + user + ' is not member of group(s): ' + requestedGroups.join(',');
 					self._logger.warn(message);
 					return callback(new Error(message))
 				}
-			});
+			})
 		} else {
 			self._logger.info('Active Directory authentication succeeded')
 			callback(null, [user]);
